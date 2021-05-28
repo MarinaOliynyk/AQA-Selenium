@@ -10,6 +10,12 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.remote.RemoteWebDriver;
+
+import java.io.IOException;
+import java.util.logging.FileHandler;
+import java.util.logging.Level;
+import java.util.logging.SimpleFormatter;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.openqa.selenium.By.cssSelector;
@@ -25,6 +31,8 @@ class CardOrderTest {
     @BeforeEach
     void setUp() {
         ChromeOptions options = new ChromeOptions();
+        options.addArguments("--disable-dev-shm-usage");
+        options.addArguments("--no-sandbox");
         options.addArguments("--headless");
         driver = new ChromeDriver(options);
     }
