@@ -10,9 +10,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.remote.RemoteWebDriver;
-
-import java.util.logging.Level;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.openqa.selenium.By.cssSelector;
@@ -33,10 +30,6 @@ class CardOrderTest {
         options.addArguments("--no-sandbox");
         options.addArguments("--headless");
         driver = new ChromeDriver(options);
-        if (driver instanceof RemoteWebDriver) {
-            ((RemoteWebDriver) driver).setLogLevel(Level.WARNING);
-        }
-        driver.get("http://localhost:9999");
     }
 
     @AfterEach
@@ -47,6 +40,7 @@ class CardOrderTest {
 
     @Test
     void shouldTest() {
+        driver.get("http://localhost:9999");
         driver.findElement(cssSelector("[class='input__control'][type='text']")).sendKeys("Марина Олийнык");
         driver.findElement(cssSelector("[class='input__control'][type='tel']")).sendKeys("+79370000000");
         driver.findElement(cssSelector(".checkbox__box")).click();
@@ -57,6 +51,7 @@ class CardOrderTest {
 
     @Test
     void shouldTestForm() {
+        driver.get("http://localhost:9999");
         WebElement form = driver.findElement(cssSelector("form"));
         form.findElement(cssSelector("[data-test-id=name] input")).sendKeys("Марина Олийнык-Шпак");
         form.findElement(cssSelector("[data-test-id=phone] input")).sendKeys("+79370000000");
@@ -68,6 +63,7 @@ class CardOrderTest {
 
     @Test
     void shouldTestFieldName() {
+        driver.get("http://localhost:9999");
         WebElement form = driver.findElement(cssSelector("form"));
         form.findElement(cssSelector("[data-test-id=name] input")).sendKeys("Marina Oliynyk");
         form.findElement(cssSelector("[data-test-id=phone] input")).sendKeys("+79370000000");
@@ -79,6 +75,7 @@ class CardOrderTest {
 
     @Test
     void shouldTestFieldPhone() {
+        driver.get("http://localhost:9999");
         WebElement form = driver.findElement(cssSelector("form"));
         form.findElement(cssSelector("[data-test-id=name] input")).sendKeys("Марина Олийнык");
         form.findElement(cssSelector("[data-test-id=phone] input")).sendKeys("89370000000");
@@ -90,6 +87,7 @@ class CardOrderTest {
 
     @Test
     void shouldTestFieldAgreement() {
+        driver.get("http://localhost:9999");
         WebElement form = driver.findElement(cssSelector("form"));
         form.findElement(cssSelector("[data-test-id=name] input")).sendKeys("Марина Олийнык");
         form.findElement(cssSelector("[data-test-id=phone] input")).sendKeys("89370000000");
@@ -100,6 +98,7 @@ class CardOrderTest {
 
     @Test
     void shouldTestFieldNonInput() {
+        driver.get("http://localhost:9999");
         WebElement form = driver.findElement(cssSelector("form"));
         form.findElement(cssSelector("[data-test-id=name] input")).sendKeys("");
         form.findElement(cssSelector("[data-test-id=phone] input")).sendKeys("");
