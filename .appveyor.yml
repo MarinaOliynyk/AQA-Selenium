@@ -14,4 +14,4 @@ install:
 
 build_script:
   - chmod +x gradlew
-  - ./gradlew test -Dselenium.headless=true --quiet
+  - ./gradlew test -Dselenium.headless=true --warn
